@@ -116,7 +116,7 @@ const Activities = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-2 bg-gradient-to-br from-black via-gray-900 to-gray-800 relative overflow-hidden"
+      className="py-10 bg-gradient-to-br from-black via-gray-900 to-gray-800 relative overflow-hidden"
     >
       {/* 배경 패턴 - 모던한 그레이 톤 */}
       <div className="absolute inset-0 opacity-10">

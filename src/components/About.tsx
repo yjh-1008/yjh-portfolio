@@ -55,7 +55,7 @@ const About = memo(() => {
       color: "from-blue-500 to-indigo-600",
     },
     {
-      icon: GlobeAltIcon,
+      icon: DevicePhoneMobileIcon,
       title: "Web Performance",
       description: "번들 최적화, 렌더링 최적화를 통한 성능 개선",
       technologies: ["Webpack", "Vite", "SEO", "Accessibility"],
@@ -84,6 +84,20 @@ const About = memo(() => {
       value: "서울, 대한민국",
       href: "#",
       color: "from-blue-500 to-cyan-500",
+    },
+    {
+      icon: GlobeAltIcon,
+      label: "GitHub",
+      value: "https://github.com/yjh-1008",
+      href: "https://github.com/yjh-1008",
+      color: "from-gray-500 to-gray-600",
+    },
+    {
+      icon: EnvelopeIcon,
+      label: "블로그",
+      value: "프론트엔드 개발 관련 블로그",
+      href: "https://velog.io/@yjh-1008/posts",
+      color: "from-gray-500 to-gray-600",
     },
   ];
 

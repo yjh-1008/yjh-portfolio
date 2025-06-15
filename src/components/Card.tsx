@@ -128,11 +128,11 @@ const Card = memo(
 
               {/* 성과 섹션 */}
               {achievements && achievements.length > 0 && (
-                <div className="p-4 sm:p-5 flex-1 min-h-0">
-                  <div className="text-xs font-medium text-gray-300 mb-3">
+                <div className="p-4 sm:px-5 pb-1 pt-2 flex-1 min-h-0">
+                  <div className="text-xs font-medium text-gray-300 mb-3 mt-1">
                     주요 성과
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-1">
                     {achievements.slice(0, 3).map((achievement, index) => (
                       <div
                         key={index}
@@ -146,7 +146,7 @@ const Card = memo(
                     ))}
                     {achievements.length > 3 && (
                       <div className="text-xs text-gray-500 text-center pt-1">
-                        +{achievements.length - 3}개 더
+                        ...
                       </div>
                     )}
                   </div>

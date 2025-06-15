@@ -58,7 +58,11 @@ const Projects = memo(() => {
 • 웹뷰 브릿지를 통한 파일 다운로드 및 브라우저 종료 로직 구현`,
       period: "2025.01 ~ 진행중",
       status: "progress" as const,
-      achievements: ["FCP 77% 개선", "LCP 64% 개선", "TTI 39% 개선"],
+      achievements: [
+        "Reverse Virtual Scroll 개발을 통한 렌더링 최적화",
+        "Redis의 Pub/Sub과 EventSource 객체를 통한 SSE를 통해 AI 응답 UI 개선",
+        "DND 기능 성능 개선",
+      ],
       company: "미디어로그",
       tags: [
         "Vue3",
@@ -102,9 +106,10 @@ const Projects = memo(() => {
       period: "2024.11 ~ 2025.01",
       status: "completed" as const,
       achievements: [
-        "네트워크 요청 43% 감소",
-        "응답속도 57% 개선",
-        "렌더링 75% 개선",
+        "서버 상태 캐싱을 통한 불필요한 API 호출을 개선하고자 Tanstack-query를 도입",
+        "렌더링 성능 최적화 번들 사이즈 개선을 통해 사용자 경험 개선",
+        "타입스크립트 도입 및 코드 안정성 확보",
+        "Atomic Design Pattern 도입을 통한 컴포넌트 구조 개선 및 리팩토링",
       ],
       tags: [
         "Vue3",
@@ -147,7 +152,11 @@ Vitest, Storybook 테스팅 환경 구축:
 • 개선을 이끌어낸 경험으로 성장 기반 마련`,
       period: "2024.02 ~ 진행중",
       status: "progress" as const,
-      achievements: ["QA 오류 92% 감소", "렌더링 85% 개선", "TDD 도입"],
+      achievements: [
+        "UI 및 내부 구조 개선",
+        "Vitest, Stor ybook을 도입하여 테스팅 환경 구축",
+        "컴포넌트에 theme, variant로 class를 주입하여 UI 통일성과 사용성 증가",
+      ],
       tags: ["Vue3", "Pinia", "Tailwind", "Storybook", "Vitest", "TDD"],
       link: "#",
     },
@@ -179,7 +188,11 @@ Vue3 마이그레이션:
 • 팀 내 혼선 방지를 위한 Composition API, Pinia 사용법 조사 및 공유`,
       period: "2023.08 ~ 2024.01",
       status: "completed" as const,
-      achievements: ["Vue3 마이그레이션", "API 호출 50% 감소", "번들 최적화"],
+      achievements: [
+        "비즈니스 로직 리팩토링 및 안정성 확보",
+        "번들 사이즈 개선 및 라이브러리 변경",
+        "Vue3 마이그레이션 및 모듈화",
+      ],
       tags: ["Vue3", "Sass", "Pinia", "yup", "Webpack", "Okta"],
       link: "#",
     },
@@ -208,7 +221,11 @@ CI/CD 편의성 개선:
 • 개발 효율성 향상을 위한 지속적인 프로세스 개선`,
       period: "2023년 ~ 2024년",
       status: "completed" as const,
-      achievements: ["배포시간 80% 단축", "자동화 구축", "프로세스 개선"],
+      achievements: [
+        "CI/CD 프로세스 성능 향상",
+        "CI/CD 편의성 개선 작업",
+        "프로세스 개선 경험 문서화 및 팀 내 공유",
+      ],
       tags: ["GitLab", "Teamcity", "CI/CD", "DevOps", "자동화"],
       link: "#",
     },
@@ -239,8 +256,11 @@ CI/CD 편의성 개선:
 • 문서 관리 효율성 극대화`,
       period: "2023년 ~ 2024년",
       status: "completed" as const,
-      achievements: ["문서 통합 관리", "보안성 강화", "온보딩 개선"],
-      tags: ["VitePress", "마크다운", "OAuth2", "문서화", "지식관리"],
+      achievements: [
+        "문서 공유 환경 및 마크다운 UI 편의성 개선",
+        "프로젝트 설정 및 환경변수 가이드 공유 편의성 개선",
+      ],
+      tags: ["VitePress", "마크다운", "OAuth2", "문서화"],
       link: "#",
     },
   ];
@@ -308,39 +328,6 @@ CI/CD 편의성 개선:
               />
             </div>
           ))}
-        </div>
-
-        {/* GitHub 섹션 */}
-        <div className="text-center">
-          <div className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl p-6 sm:p-8 md:p-10 text-gray-100 shadow-xl border border-gray-600">
-            <div className="max-w-3xl mx-auto">
-              <h3 className="text-heading-3 font-bold mb-4">
-                더 많은 프로젝트
-              </h3>
-              <p className="text-body-1 text-gray-300 leading-relaxed mb-6 sm:mb-8">
-                GitHub에서 더 많은 오픈소스 프로젝트와 실험적인 코드들을
-                확인하실 수 있습니다. 지속적인 학습과 개발을 통해 새로운 기술을
-                탐구하고 있습니다.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="https://github.com/yjh-1008"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 px-6 py-3 bg-gray-100 text-black font-semibold rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-lg hover:bg-white"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                  </svg>
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
