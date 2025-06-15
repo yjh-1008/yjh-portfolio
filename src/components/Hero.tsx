@@ -6,6 +6,7 @@ import {
   createHeroTimeline,
   createScrollIndicatorAnimation,
 } from "../utils/animations";
+import { downloadFromGoogleDrive } from "../utils/download";
 
 const Hero = memo(() => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -34,6 +35,11 @@ const Hero = memo(() => {
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: "smooth" });
     }
+  }, []);
+
+  // 이력서 다운로드 함수
+  const handleDownloadResume = useCallback(() => {
+    downloadFromGoogleDrive("유준호_이력서.pdf");
   }, []);
 
   useEffect(() => {
@@ -129,6 +135,15 @@ const Hero = memo(() => {
             className="border-gray-600 text-gray-300 hover:border-gray-400 hover:text-gray-100 hover:bg-gray-800/50"
           >
             더 알아보기
+          </Button>
+
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={handleDownloadResume}
+            className="border-gray-600 text-gray-300 hover:border-gray-400 hover:text-gray-100 hover:bg-gray-800/50"
+          >
+            이력서 다운로드
           </Button>
         </div>
       </div>
