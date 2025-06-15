@@ -63,7 +63,7 @@ const Card = memo(
 
     return (
       <div
-        className="group h-96 w-full"
+        className="group h-96 sm:h-96 md:h-96 w-full min-h-[400px] sm:min-h-[384px]"
         style={{ perspective: "1000px" }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -87,7 +87,7 @@ const Card = memo(
           >
             <div className="relative w-full h-full bg-gray-900 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-700 hover:border-gray-600">
               {/* 헤더 섹션 */}
-              <div className="p-5 border-b border-gray-700/50">
+              <div className="p-4 sm:p-5 border-b border-gray-700/50">
                 {/* 메타 정보 */}
                 <div className="flex items-center justify-between mb-3">
                   {company && (
@@ -109,7 +109,7 @@ const Card = memo(
                 </div>
 
                 {/* 타이틀 */}
-                <h3 className="text-lg font-bold text-gray-100 mb-2 line-clamp-2 leading-tight">
+                <h3 className="text-base sm:text-lg font-bold text-gray-100 mb-2 line-clamp-2 leading-tight">
                   {title}
                 </h3>
 
@@ -128,7 +128,7 @@ const Card = memo(
 
               {/* 성과 섹션 */}
               {achievements && achievements.length > 0 && (
-                <div className="p-5 flex-1 min-h-0">
+                <div className="p-4 sm:p-5 flex-1 min-h-0">
                   <div className="text-xs font-medium text-gray-300 mb-3">
                     주요 성과
                   </div>
@@ -154,7 +154,7 @@ const Card = memo(
               )}
 
               {/* 태그 섹션 */}
-              <div className="p-5 pt-2">
+              <div className="p-4 sm:p-5 pt-2">
                 <div className="flex flex-wrap gap-1.5">
                   {tags.slice(0, 5).map((tag, index) => (
                     <span
@@ -182,7 +182,7 @@ const Card = memo(
               transform: "rotateY(180deg)",
             }}
           >
-            <div className="w-full h-full bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 rounded-2xl shadow-lg p-5 flex flex-col justify-between text-gray-100 relative overflow-hidden border border-gray-600">
+            <div className="w-full h-full bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900 rounded-2xl shadow-lg p-4 sm:p-5 flex flex-col justify-between text-gray-100 relative overflow-hidden border border-gray-600">
               {/* 배경 패턴 */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-600/10 to-transparent" />
               <div className="absolute top-0 right-0 w-32 h-32 bg-gray-500/20 rounded-full blur-2xl -translate-y-8 translate-x-8" />
@@ -191,7 +191,7 @@ const Card = memo(
               <div className="relative z-10 flex-1 flex flex-col">
                 {/* 타이틀과 설명 */}
                 <div className="mb-4">
-                  <h3 className="text-lg font-bold mb-2 text-gray-100 line-clamp-2">
+                  <h3 className="text-base sm:text-lg font-bold mb-2 text-gray-100 line-clamp-2">
                     {title}
                   </h3>
                   <p className="text-sm text-gray-300 leading-relaxed line-clamp-3">

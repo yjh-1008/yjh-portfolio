@@ -4,9 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
-  CodeBracketIcon,
-  PencilSquareIcon,
-  MicrophoneIcon,
   CubeIcon,
   AcademicCapIcon,
   TrophyIcon,
@@ -19,14 +16,10 @@ interface Activity {
   id: number;
   title: string;
   description: string;
-  detailDescription: string;
-  imageUrl: string;
   tags: string[];
-  link: string;
   icon: React.ElementType;
   period: string;
   achievements: string[];
-  color: string;
 }
 
 const Activities = () => {
@@ -39,167 +32,31 @@ const Activities = () => {
   const activities: Activity[] = [
     {
       id: 1,
-      title: "오픈소스 기여",
-      description:
-        "React, TypeScript 관련 오픈소스 프로젝트에 기여하며 개발 커뮤니티와 함께 성장하고 있습니다.",
-      detailDescription: `오픈소스 생태계에 적극적으로 참여하며 개발 커뮤니티에 기여하고 있습니다.
-
-주요 활동:
-• React, Vue.js 등 주요 프론트엔드 라이브러리 버그 수정
-• 문서화 개선 및 번역 작업 참여
-• 새로운 기능 제안 및 구현
-• 코드 리뷰 및 이슈 해결 지원
-• 개발자 커뮤니티 멘토링 활동
-
-기여 성과:
-• 총 50+ Pull Request 승인
-• 10+ 오픈소스 프로젝트 기여
-• 커뮤니티 내 활발한 토론 참여
-• 신규 개발자 온보딩 지원`,
-      imageUrl: "https://source.unsplash.com/800x600?opensource&sig=1",
-      tags: ["Open Source", "GitHub", "Community", "Mentoring"],
-      link: "https://github.com/yourusername",
-      icon: CodeBracketIcon,
-      period: "2022 - 현재",
-      achievements: ["10+ PR 승인", "5개 프로젝트 기여", "커뮤니티 활동"],
-      color: "from-gray-600 to-gray-500",
+      title: "빵 예약 서비스 (Bread It Now)",
+      description: "Next.js와 Firebase를 활용한 B2C 빵집 예약 서비스 개발",
+      tags: ["Next.js", "Zustand", "Vitest", "Tailwind", "Firebase"],
+      icon: CubeIcon,
+      period: "2025.01 ~ 2025.06",
+      achievements: ["소셜 로그인 구현", "FCM 알람 기능", "컴포넌트 최적화"],
     },
     {
       id: 2,
-      title: "기술 블로그 운영",
-      description:
-        "개발 경험과 학습 내용을 정리하여 다른 개발자들과 지식을 공유하고 있습니다.",
-      detailDescription: `개발자로서의 경험과 학습한 내용을 체계적으로 정리하여 공유하고 있습니다.
-
-주요 콘텐츠:
-• 프론트엔드 개발 트렌드 및 기술 분석
-• 실무에서 마주한 문제 해결 과정 공유
-• 새로운 기술 스택 학습 후기
-• 개발 도구 및 워크플로우 최적화 팁
-• 코드 리팩토링 및 성능 최적화 사례
-
-운영 성과:
-• 월 평균 10,000+ 페이지뷰
-• 50+ 기술 아티클 발행
-• 개발자 커뮤니티 내 활발한 피드백
-• 기술 세미나 발표 경험`,
-      imageUrl: "https://source.unsplash.com/800x600?blog&sig=2",
-      tags: ["Tech Blog", "Writing", "Knowledge Sharing", "SEO"],
-      link: "https://blog.example.com",
-      icon: PencilSquareIcon,
-      period: "2021 - 현재",
-      achievements: ["50+ 포스팅", "월 1만+ 조회수", "개발 팁 공유"],
-      color: "from-gray-600 to-gray-500",
+      title: "사이드 프로젝트 모집 사이트 (Wahtpl)",
+      description: "Nuxt.js와 TypeScript를 활용한 사이드 프로젝트 모집 플랫폼",
+      tags: ["Nuxt.js", "TypeScript", "Pinia", "Tailwind", "OAuth2"],
+      icon: AcademicCapIcon,
+      period: "2024.01 ~ 2024.10",
+      achievements: ["무한 스크롤 구현", "SEO 최적화", "소셜 로그인"],
     },
     {
       id: 3,
-      title: "컨퍼런스 발표",
+      title: "개인 포트폴리오 웹사이트",
       description:
-        "프론트엔드 개발 관련 컨퍼런스에서 발표하며 경험을 공유했습니다.",
-      detailDescription: `최신 기술 트렌드를 파악하고 개발자 네트워크를 확장하기 위해 적극적으로 참여하고 있습니다.
-
-참여 컨퍼런스:
-• FEConf 2023 - 프론트엔드 개발 트렌드
-• DEVIEW 2023 - 네이버 개발자 컨퍼런스
-• JSConf Korea 2023 - JavaScript 생태계
-• React Korea Meetup - 정기 모임 참여
-• GDG DevFest Seoul - Google 기술 세미나
-
-활동 내용:
-• 최신 기술 트렌드 학습 및 적용
-• 업계 전문가들과의 네트워킹
-• 기술 세션 참여 및 질의응답
-• 개발자 커뮤니티 활동 확대`,
-      imageUrl: "https://source.unsplash.com/800x600?conference&sig=3",
-      tags: ["Conference", "Networking", "Learning", "Community"],
-      link: "https://example.com/conferences",
-      icon: MicrophoneIcon,
-      period: "2023",
-      achievements: ["3회 발표", "200+ 참석자", "긍정적 피드백"],
-      color: "from-gray-600 to-gray-500",
-    },
-    {
-      id: 4,
-      title: "사이드 프로젝트",
-      description:
-        "개인 프로젝트를 통해 새로운 기술을 학습하고 실무에 적용하고 있습니다.",
-      detailDescription: `업무 외 시간을 활용하여 창의적이고 실험적인 프로젝트들을 진행하고 있습니다.
-
-진행 프로젝트:
-• 개발자를 위한 생산성 도구 개발
-• AI를 활용한 코드 리뷰 자동화 도구
-• 실시간 협업 화이트보드 애플리케이션
-• 개발자 포트폴리오 템플릿 제작
-• 오픈소스 UI 컴포넌트 라이브러리
-
-기술적 도전:
-• 새로운 기술 스택 실험 및 적용
-• 사용자 중심의 UX/UI 디자인 연구
-• 성능 최적화 및 확장성 고려
-• 지속 가능한 개발 프로세스 구축`,
-      imageUrl: "https://source.unsplash.com/800x600?project&sig=4",
-      tags: ["Side Project", "Innovation", "Experimentation", "Creativity"],
-      link: "https://github.com/yourusername/side-projects",
-      icon: CubeIcon,
-      period: "2022 - 현재",
-      achievements: ["5개 프로젝트 완성", "새 기술 도입", "사용자 피드백 반영"],
-      color: "from-gray-600 to-gray-500",
-    },
-    {
-      id: 5,
-      title: "멘토링 활동",
-      description:
-        "주니어 개발자들을 대상으로 멘토링을 진행하며 성장을 돕고 있습니다.",
-      detailDescription: `개발 지식과 경험을 나누며 후배 개발자들의 성장을 돕고 있습니다.
-
-멘토링 활동:
-• 주니어 개발자 1:1 멘토링 (월 2회)
-• 코딩 부트캠프 멘토 활동
-• 대학교 프로그래밍 동아리 지도
-• 온라인 개발자 커뮤니티 질의응답
-• 취업 준비생 포트폴리오 리뷰
-
-교육 내용:
-• 프론트엔드 개발 기초부터 심화까지
-• 실무 프로젝트 경험 공유
-• 코드 리뷰 및 개선 방향 제시
-• 개발자 커리어 상담 및 조언
-• 기술 면접 준비 지원`,
-      imageUrl: "https://source.unsplash.com/800x600?mentoring&sig=5",
-      tags: ["Mentoring", "Education", "Teaching", "Career Guidance"],
-      link: "https://example.com/mentoring",
-      icon: AcademicCapIcon,
-      period: "2023 - 현재",
-      achievements: ["10명 멘티", "코드 리뷰", "커리어 상담"],
-      color: "from-gray-600 to-gray-500",
-    },
-    {
-      id: 6,
-      title: "해커톤 참여",
-      description:
-        "다양한 해커톤에 참여하여 빠른 프로토타이핑과 팀워크 경험을 쌓았습니다.",
-      detailDescription: `제한된 시간 내에 창의적인 아이디어를 구현하는 해커톤에 적극 참여하고 있습니다.
-
-참여 해커톤:
-• Junction X Seoul 2023 - 핀테크 솔루션 개발
-• 서울 스타트업 해커톤 - 사회문제 해결 앱
-• 대학생 프로그래밍 경진대회 - 웹 서비스 개발
-• 기업 주관 해커톤 - 업무 효율성 도구
-• 글로벌 온라인 해커톤 - AI 활용 서비스
-
-성과 및 수상:
-• Junction X Seoul 2023 - 우수상 수상
-• 서울 스타트업 해커톤 - 최우수상
-• 총 5회 해커톤 참여, 3회 수상
-• 빠른 프로토타이핑 및 MVP 개발 경험
-• 다양한 분야 개발자들과의 협업 경험`,
-      imageUrl: "https://source.unsplash.com/800x600?hackathon&sig=6",
-      tags: ["Hackathon", "Prototyping", "Innovation", "Teamwork"],
-      link: "https://example.com/hackathons",
+        "React와 TypeScript를 활용한 인터랙티브 포트폴리오 사이트 개발",
+      tags: ["React", "TypeScript", "Tailwind", "GSAP", "Vite"],
       icon: TrophyIcon,
-      period: "2022 - 2023",
-      achievements: ["3회 참여", "1회 수상", "팀 리더 경험"],
-      color: "from-gray-600 to-gray-500",
+      period: "2025.01 - 진행중",
+      achievements: ["반응형 디자인", "GSAP 애니메이션", "GitHub Pages 배포"],
     },
   ];
 
@@ -259,7 +116,7 @@ const Activities = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-20 bg-gradient-to-br from-black via-gray-900 to-gray-800 relative overflow-hidden"
+      className="py-2 bg-gradient-to-br from-black via-gray-900 to-gray-800 relative overflow-hidden"
     >
       {/* 배경 패턴 - 모던한 그레이 톤 */}
       <div className="absolute inset-0 opacity-10">
@@ -405,29 +262,6 @@ const Activities = () => {
             >
               다음
             </Button>
-          </div>
-        </div>
-
-        {/* 추가 정보 섹션 */}
-        <div className="mt-16">
-          <div className="bg-gradient-to-br from-gray-800/80 to-gray-700/80 backdrop-blur-md rounded-2xl p-8 border border-gray-600/50 shadow-xl">
-            <h3 className="text-heading-4 font-semibold text-gray-100 mb-4 text-center">
-              함께 성장하는 개발자
-            </h3>
-            <p className="text-body-1 text-gray-300 leading-relaxed mb-6 max-w-3xl mx-auto text-center">
-              개발은 혼자 하는 것이 아니라고 생각합니다. 커뮤니티와 함께
-              성장하며, 배운 것을 나누고, 새로운 도전을 통해 더 나은 개발자가
-              되기 위해 노력하고 있습니다.
-            </p>
-            <div className="text-center">
-              <Button
-                variant="primary"
-                size="lg"
-                className="bg-gray-100 hover:bg-white text-black shadow-lg border-0"
-              >
-                더 많은 활동 보기
-              </Button>
-            </div>
           </div>
         </div>
       </div>

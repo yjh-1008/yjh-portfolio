@@ -207,21 +207,24 @@ const About = memo(() => {
             ))}
 
             {/* 추가 정보 카드 */}
-            <div className="skill-card bg-gradient-to-br from-gray-700 to-gray-600 rounded-2xl p-8 text-gray-100 shadow-xl border border-gray-500">
-              <h5 className="text-heading-4 font-semibold mb-4">
-                함께 성장하고 싶습니다
-              </h5>
-              <p className="text-body-2 text-gray-300 leading-relaxed mb-6">
-                새로운 기술에 대한 호기심과 지속적인 학습을 통해 더 나은
-                개발자가 되기 위해 노력하고 있습니다.
-              </p>
+            <div className="flex items-center skill-card bg-gray-800/80 rounded-2xl p-8 text-gray-100 shadow-xl border border-gray-500">
               <Button
                 variant="outline"
                 size="lg"
                 onClick={handleDownloadResume}
-                className="border-gray-500 text-gray-200 hover:border-gray-300 hover:text-white hover:bg-gray-700/50 transition-all duration-300"
+                className="border-gray-500 bg-gray-700  text-gray-200 hover:border-gray-300 hover:text-white hover:bg-gray-700/50 transition-all duration-300"
               >
-                📄 이력서 다운로드
+                📄 이력서
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() =>
+                  window.open(import.meta.env.VITE_LINKEDIN_URL, "_blank")
+                }
+                className="ml-2 border-gray-500 bg-gray-700 text-gray-200 hover:border-gray-300 hover:text-white hover:bg-gray-700/50 transition-all duration-300 flex items-center gap-2"
+              >
+                LinkedIn
               </Button>
             </div>
           </div>

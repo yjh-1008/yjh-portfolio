@@ -268,7 +268,7 @@ CI/CD 편의성 개선:
     <section
       id="projects"
       ref={sectionRef}
-      className="py-20 bg-gradient-to-br from-black via-gray-900 to-gray-800 relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-black via-gray-900 to-gray-800 relative overflow-hidden"
     >
       {/* 배경 패턴 - 모던한 그레이 톤 */}
       <div className="absolute inset-0 opacity-10">
@@ -277,9 +277,9 @@ CI/CD 편의성 개선:
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-gray-500 to-gray-400 rounded-full blur-3xl opacity-60" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* 섹션 타이틀 */}
-        <div ref={titleRef} className="text-center mb-16">
+        <div ref={titleRef} className="text-center mb-12 sm:mb-16">
           <h2 className="text-heading-2 md:text-heading-1 font-bold text-gray-100 mb-4">
             Projects
           </h2>
@@ -291,7 +291,7 @@ CI/CD 편의성 개선:
         {/* 프로젝트 그리드 */}
         <div
           ref={gridRef}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16"
         >
           {projects.map((project) => (
             <div key={project.id} className="project-card">
@@ -312,12 +312,12 @@ CI/CD 편의성 개선:
 
         {/* GitHub 섹션 */}
         <div className="text-center">
-          <div className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl p-8 md:p-10 text-gray-100 shadow-xl border border-gray-600">
+          <div className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl p-6 sm:p-8 md:p-10 text-gray-100 shadow-xl border border-gray-600">
             <div className="max-w-3xl mx-auto">
               <h3 className="text-heading-3 font-bold mb-4">
                 더 많은 프로젝트
               </h3>
-              <p className="text-body-1 text-gray-300 leading-relaxed mb-8">
+              <p className="text-body-1 text-gray-300 leading-relaxed mb-6 sm:mb-8">
                 GitHub에서 더 많은 오픈소스 프로젝트와 실험적인 코드들을
                 확인하실 수 있습니다. 지속적인 학습과 개발을 통해 새로운 기술을
                 탐구하고 있습니다.
