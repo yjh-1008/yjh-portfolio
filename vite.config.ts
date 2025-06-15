@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: "/yjh-portfolio/",
   build: {
     // 청크 크기 최적화
     chunkSizeWarningLimit: 1000,
