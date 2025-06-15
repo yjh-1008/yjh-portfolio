@@ -15,7 +15,7 @@ import {
   createSlideAnimation,
   createCardAnimation,
 } from "../utils/animations";
-
+import { downloadResume } from "../utils/download";
 gsap.registerPlugin(ScrollTrigger);
 
 const About = memo(() => {
@@ -43,22 +43,22 @@ const About = memo(() => {
     {
       icon: CodeBracketIcon,
       title: "Frontend Development",
-      description: "React, TypeScript, Next.js를 활용한 모던 웹 개발",
-      technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
+      description: "Vue, React, TypeScript를 활용한 모던 웹 개발",
+      technologies: ["Vue", "React", "TypeScript", "Next.js", "Tailwind CSS"],
       color: "from-emerald-500 to-teal-600",
     },
     {
       icon: DevicePhoneMobileIcon,
       title: "Mobile Experience",
       description: "반응형 디자인과 모바일 최적화된 사용자 경험",
-      technologies: ["Responsive Design", "PWA", "Mobile First"],
+      technologies: ["Responsive Design", "Mobile First"],
       color: "from-blue-500 to-indigo-600",
     },
     {
       icon: GlobeAltIcon,
       title: "Web Performance",
-      description: "최적화된 성능과 SEO를 고려한 웹 애플리케이션",
-      technologies: ["Performance", "SEO", "Accessibility"],
+      description: "번들 최적화, 렌더링 최적화를 통한 성능 개선",
+      technologies: ["Webpack", "Vite", "SEO", "Accessibility"],
       color: "from-purple-500 to-pink-600",
     },
   ];
@@ -67,15 +67,15 @@ const About = memo(() => {
     {
       icon: EnvelopeIcon,
       label: "이메일",
-      value: "yujunho@example.com",
-      href: "mailto:yujunho@example.com",
+      value: "dbwnsgh1226@naver.com",
+      href: "mailto:dbwnsgh1226@naver.com",
       color: "from-red-500 to-pink-500",
     },
     {
       icon: PhoneIcon,
       label: "전화",
-      value: "+82 10-1234-5678",
-      href: "tel:+821012345678",
+      value: "+82 10-4023-5680",
+      href: "tel:+821040235680",
       color: "from-green-500 to-emerald-500",
     },
     {
@@ -86,6 +86,11 @@ const About = memo(() => {
       color: "from-blue-500 to-cyan-500",
     },
   ];
+
+  // 이력서 다운로드 함수
+  const handleDownloadResume = () => {
+    downloadResume(); // 구글 드라이브에서 다운로드
+  };
 
   return (
     <section
@@ -107,7 +112,7 @@ const About = memo(() => {
             About Me
           </h2>
           <p className="text-body-1 text-gray-400 max-w-2xl mx-auto">
-            사용자 중심의 경험을 만들어가는 개발자입니다
+            지속적인 개선을 통해 사용자에게 더 나은 UX를 제공하고 있습니다.
           </p>
         </div>
 
@@ -118,7 +123,7 @@ const About = memo(() => {
             <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-700">
               <div className="flex items-start space-x-6">
                 <div className="w-24 h-24 bg-gradient-to-br from-gray-600 to-gray-500 rounded-xl flex items-center justify-center text-gray-100 text-2xl font-bold shadow-lg">
-                  YJ
+                  YJH
                 </div>
                 <div className="flex-1">
                   <h3 className="text-heading-4 font-bold text-gray-100 mb-2">
@@ -129,8 +134,8 @@ const About = memo(() => {
                   </p>
                   <p className="text-body-2 text-gray-400 leading-relaxed">
                     3년차 프론트엔드 개발자로서 사용자 경험을 최우선으로
-                    생각하며, 최신 기술 스택을 활용해 혁신적인 웹 서비스를
-                    개발하고 있습니다.
+                    생각하며, 다양한 기술 스텍을 학습하며 프로젝트의 발전을
+                    추구하고 있습니다.
                   </p>
                 </div>
               </div>
@@ -211,11 +216,12 @@ const About = memo(() => {
                 개발자가 되기 위해 노력하고 있습니다.
               </p>
               <Button
-                variant="secondary"
-                size="md"
-                className="bg-gray-800/50 hover:bg-gray-800 backdrop-blur-sm text-gray-100 border-gray-500 shadow-lg"
+                variant="outline"
+                size="lg"
+                onClick={handleDownloadResume}
+                className="border-gray-500 text-gray-200 hover:border-gray-300 hover:text-white hover:bg-gray-700/50 transition-all duration-300"
               >
-                이력서 다운로드
+                📄 이력서 다운로드
               </Button>
             </div>
           </div>

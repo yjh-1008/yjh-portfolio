@@ -81,7 +81,7 @@ const Hero = memo(() => {
             안녕하세요,
             <br />
             <span className="bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100 bg-clip-text text-transparent">
-              3년차 프론트엔드 개발자
+              Frontend Developer
             </span>{" "}
             <br />
             유준호입니다
@@ -91,7 +91,7 @@ const Hero = memo(() => {
         {/* 서브타이틀 */}
         <div ref={subtitleRef} className="mb-8">
           <p className="text-heading-4 md:text-heading-3 text-gray-400 font-medium">
-            사용자 경험을 최우선으로 생각하는
+            끊임없이 개선하는
             <br className="hidden sm:block" />
             <span className="text-transparent bg-gradient-to-r from-gray-300 to-gray-200 bg-clip-text">
               프론트엔드 개발자
@@ -102,10 +102,9 @@ const Hero = memo(() => {
         {/* 설명 */}
         <div ref={descriptionRef} className="mb-16">
           <p className="text-body-1 md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed">
-            혁신적인 기술과 창의적인 아이디어로 더 나은 디지털 경험을
-            만들어갑니다.
+            지속적인 성능 개선을 통해 프로젝트의 발전을 추구하고 있습니다.
             <br />
-            사용자 중심의 인터페이스와 최적화된 성능을 통해 가치를 전달합니다.
+            팀의 역량 향상을 중요한 가치로 두고 있습니다.
           </p>
         </div>
 
