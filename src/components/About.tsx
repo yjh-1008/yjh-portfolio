@@ -150,7 +150,7 @@ const About = memo(() => {
                 {contacts.map((contact, index) => (
                   <a
                     key={index}
-                    href={contact.href}
+                    href={contact.href === "#" ? undefined : contact.href}
                     className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-700/50 transition-colors duration-200 group"
                   >
                     <div className="w-12 h-12 bg-gradient-to-br from-gray-600 to-gray-500 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:scale-110">
