@@ -1,7 +1,18 @@
-import { useEffect, useCallback, memo } from "react";
+import { useEffect, useCallback, memo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  XMarkIcon,
+  ChevronDownIcon,
+  ChevronRightIcon,
+} from "@heroicons/react/24/outline";
 import Button from "./Button";
+
+interface HierarchicalAchievement {
+  title: string;
+  description?: string;
+  metrics?: string;
+  subItems?: HierarchicalAchievement[];
+}
 
 interface ModalProps {
   isOpen: boolean;
@@ -12,10 +23,140 @@ interface ModalProps {
   period?: string;
   status?: "progress" | "completed";
   achievements?: string[];
+  hierarchicalAchievements?: HierarchicalAchievement[];
   company?: string;
   tags: string[];
   link?: string;
 }
+
+// 계층적 성과를 트리 형태로 렌더링하는 컴포넌트
+const AchievementTree = memo(
+  ({ items }: { items: HierarchicalAchievement[] }) => {
+    const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+
+    const toggleExpanded = (itemId: string) => {
+      const newExpanded = new Set(expandedItems);
+      if (newExpanded.has(itemId)) {
+        newExpanded.delete(itemId);
+      } else {
+        newExpanded.add(itemId);
+      }
+      setExpandedItems(newExpanded);
+    };
+
+    const renderAchievementItem = (
+      item: HierarchicalAchievement,
+      depth: number = 0,
+      index: number = 0
+    ) => {
+      const itemId = `${depth}-${index}`;
+      const hasSubItems = item.subItems && item.subItems.length > 0;
+      const isExpanded = expandedItems.has(itemId);
+
+      // 깊이별 들여쓰기 클래스 정의
+      const getIndentClass = (depth: number) => {
+        switch (depth) {
+          case 0:
+            return "";
+          case 1:
+            return "ml-4";
+          case 2:
+            return "ml-8";
+          default:
+            return "ml-8";
+        }
+      };
+
+      return (
+        <div key={itemId} className={getIndentClass(depth)}>
+          <div
+            className={`flex items-start gap-3 p-3 sm:p-4 rounded-lg border transition-all duration-200 ${
+              depth === 0
+                ? "bg-gradient-to-r from-gray-800/60 to-gray-800/40 border-gray-600/60 hover:border-gray-500/60"
+                : "bg-gray-800/30 border-gray-700/50 hover:border-gray-600/50"
+            }`}
+          >
+            {/* 아이콘/확장 버튼 */}
+            <div className="flex-shrink-0 mt-1">
+              {hasSubItems ? (
+                <button
+                  onClick={() => toggleExpanded(itemId)}
+                  className="w-5 h-5 flex items-center justify-center rounded hover:bg-gray-700/50 transition-colors"
+                >
+                  {isExpanded ? (
+                    <ChevronDownIcon className="w-4 h-4 text-blue-400" />
+                  ) : (
+                    <ChevronRightIcon className="w-4 h-4 text-blue-400" />
+                  )}
+                </button>
+              ) : (
+                <div
+                  className={`w-2 h-2 rounded-full mt-1.5 ${
+                    depth === 0
+                      ? "bg-blue-400"
+                      : depth === 1
+                      ? "bg-green-400"
+                      : "bg-yellow-400"
+                  }`}
+                ></div>
+              )}
+            </div>
+
+            {/* 콘텐츠 */}
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                <div className="flex-1">
+                  <h4
+                    className={`font-semibold text-gray-100 mb-1 ${
+                      depth === 0 ? "text-base" : "text-sm"
+                    }`}
+                  >
+                    {item.title}
+                  </h4>
+                  {item.description && (
+                    <p className="text-sm text-gray-300 leading-relaxed mb-2">
+                      {item.description}
+                    </p>
+                  )}
+                </div>
+                {item.metrics && (
+                  <div className="flex-shrink-0">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                      {item.metrics}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* 하위 항목들 */}
+          <AnimatePresence>
+            {hasSubItems && isExpanded && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+                className="mt-3 space-y-2 overflow-hidden"
+              >
+                {item.subItems!.map((subItem, subIndex) =>
+                  renderAchievementItem(subItem, depth + 1, subIndex)
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      );
+    };
+
+    return (
+      <div className="space-y-3">
+        {items.map((item, index) => renderAchievementItem(item, 0, index))}
+      </div>
+    );
+  }
+);
 
 const Modal = memo(
   ({
@@ -27,6 +168,7 @@ const Modal = memo(
     period,
     status,
     achievements,
+    hierarchicalAchievements,
     company,
     tags,
   }: ModalProps) => {
@@ -75,7 +217,7 @@ const Modal = memo(
                 duration: 0.4,
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
-              className="relative w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] bg-gray-900 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden border border-gray-700"
+              className="relative w-full max-w-5xl max-h-[95vh] sm:max-h-[90vh] bg-gray-900 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden border border-gray-700"
               onClick={(e) => e.stopPropagation()}
             >
               {/* 헤더 */}
@@ -126,28 +268,42 @@ const Modal = memo(
 
               {/* 콘텐츠 */}
               <div className="p-4 sm:p-6 max-h-[65vh] sm:max-h-[60vh] overflow-y-auto">
-                {/* 주요 성과 */}
-                {achievements && achievements.length > 0 && (
-                  <div className="mb-6 sm:mb-8">
-                    <h3 className="text-base sm:text-lg font-semibold text-gray-100 mb-3 sm:mb-4 flex items-center">
-                      <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                      주요 성과
-                    </h3>
-                    <div className="grid grid-cols-1 gap-3">
-                      {achievements.map((achievement, index) => (
-                        <div
-                          key={index}
-                          className="flex items-start gap-3 p-3 sm:p-4 bg-gray-800/50 rounded-lg border border-gray-700/50"
-                        >
-                          <div className="w-2 h-2 bg-green-400 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></div>
-                          <span className="text-sm text-gray-300 leading-relaxed">
-                            {achievement}
-                          </span>
-                        </div>
-                      ))}
+                {/* 계층적 주요 성과 */}
+                {hierarchicalAchievements &&
+                  hierarchicalAchievements.length > 0 && (
+                    <div className="mb-6 sm:mb-8">
+                      <h3 className="text-base sm:text-lg font-semibold text-gray-100 mb-4 sm:mb-6 flex items-center">
+                        <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+                        주요 성과
+                      </h3>
+                      <AchievementTree items={hierarchicalAchievements} />
                     </div>
-                  </div>
-                )}
+                  )}
+
+                {/* 기존 평면적 성과 (fallback) */}
+                {!hierarchicalAchievements &&
+                  achievements &&
+                  achievements.length > 0 && (
+                    <div className="mb-6 sm:mb-8">
+                      <h3 className="text-base sm:text-lg font-semibold text-gray-100 mb-3 sm:mb-4 flex items-center">
+                        <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
+                        주요 성과
+                      </h3>
+                      <div className="grid grid-cols-1 gap-3">
+                        {achievements.map((achievement, index) => (
+                          <div
+                            key={index}
+                            className="flex items-start gap-3 p-3 sm:p-4 bg-gray-800/50 rounded-lg border border-gray-700/50"
+                          >
+                            <div className="w-2 h-2 bg-green-400 rounded-full mt-1.5 sm:mt-2 flex-shrink-0"></div>
+                            <span className="text-sm text-gray-300 leading-relaxed">
+                              {achievement}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                 {/* 상세 설명 */}
                 <div className="mb-6 sm:mb-8">
